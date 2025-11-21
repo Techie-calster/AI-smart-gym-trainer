@@ -37,7 +37,7 @@ A Python-based tool that analyzes exercise videos to provide posture tracking an
 ## Running
 - Launch the web interface (recommended):
   python launch.py
-  This will open the repository's home.html (if present) in your default browser and also start app.py (if present). If app.py defines a Flask app object named `app`, launch.py will run it directly; otherwise it will start app.py as a subprocess.
+  This will open the repository's home.html (if present) in your default browser and also start app.py (if present). 
 
 - Run the main script (logical/CLI part):
   python main.py --input path/to/video.mp4
@@ -46,7 +46,7 @@ A Python-based tool that analyzes exercise videos to provide posture tracking an
 ## Project structure
 - main.py — entry point for processing video/webcam input (CLI / logical part)
 - launch.py — launcher for the web UI (opens home.html and runs app.py)
-- app.py — optional Flask / web app
+- app.py — web app
 - requirements.txt — pinned dependencies (not always present)
 - utils/ — helper modules and utilities
 - models/ — model/config files (if any)
