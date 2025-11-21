@@ -1,6 +1,6 @@
 # AI Smart Gym Trainer
 
-A Python-based tool that analyzes exercise videos to provide posture tracking and basic feedback using computer vision. It uses MediaPipe for pose detection and OpenCV for video processing to help users monitor form during workouts.
+A Python-based tool that analyzes exercise videos to provide posture tracking and basic feedback using computer vision. It uses MediaPipe for pose detection and OpenCV for video processing to help analyze workouts and provide basic feedback.
 
 ## Features
 - Pose and landmark detection via MediaPipe
@@ -32,24 +32,27 @@ A Python-based tool that analyzes exercise videos to provide posture tracking an
 
 4. Fix protobuf compatibility (important for MediaPipe):
    pip uninstall protobuf -y
-   pip install protobuf==3.20.3
+   pip install protobuf==4.25.*
 
 ## Running
-- Run the main script:
-  python main.py
-- Follow prompts to provide a path to a local video file or specify webcam input (e.g., 0).
-- Example flags if implemented:
-  python main.py --video path/to/video.mp4
-  python main.py --webcam 0
+- Launch the web interface (recommended):
+  python launch.py
+  This will open the repository's home.html (if present) in your default browser and also start app.py (if present). If app.py defines a Flask app object named `app`, launch.py will run it directly; otherwise it will start app.py as a subprocess.
+
+- Run the main script (logical/CLI part):
+  python main.py --input path/to/video.mp4
+  (main.py processes videos or webcam input; you may upload/overwrite main.py for a cleaned/beautified logical entry point.)
 
 ## Project structure
-- main.py — entry point for processing video/webcam input
+- main.py — entry point for processing video/webcam input (CLI / logical part)
+- launch.py — launcher for the web UI (opens home.html and runs app.py)
+- app.py — optional Flask / web app
 - requirements.txt — pinned dependencies (not always present)
 - utils/ — helper modules and utilities
 - models/ — model/config files (if any)
 
 ## Notes & Troubleshooting
-- MediaPipe can be sensitive to newer protobuf versions; installing protobuf==3.20.3 avoids common runtime errors.
+- MediaPipe can be sensitive to newer protobuf versions. We now recommend protobuf==4.25.* as requested; after updating, test MediaPipe functionality. If you see compatibility errors with MediaPipe and protobuf 4.25.*, consider using an isolated environment or pinning a different compatible mediapipe/protobuf combination.
 - If you encounter OpenCV or MediaPipe errors, try reinstalling dependencies inside a fresh virtual environment.
 - If your camera or video feed doesn't open, verify permissions and the correct device index.
 
